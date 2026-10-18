@@ -20,3 +20,4 @@
 /test/var
 /var
 /vendor
+/local-dev/__pycache__/
