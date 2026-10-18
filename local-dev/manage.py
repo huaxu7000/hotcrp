@@ -198,6 +198,7 @@ $Opt["emailFrom"] = "HotCRP Local <admin@hotcrp.localhost>";
 $Opt["sendEmail"] = true;
 $Opt["sendmailParam"] = "";
 $Opt["timezone"] = "America/New_York";
+$Opt["stylesheets"][] = "stylesheets/aitcc-theme.css";
 $Opt["pdftohtmlCommand"] = "'''+str(BREW)+'''/bin/pdftohtml";
 ''')
             (ROOT/'conf/options.php').chmod(0o600)

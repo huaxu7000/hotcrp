@@ -1,0 +1,210 @@
+/* AITCC-inspired visual theme. Loaded after upstream CSS; no workflow changes.
+ * System fonts keep the installation self-contained. Screen-only so upstream
+ * print layouts, semantic status colors, visibility rules and controls survive.
+ */
+@media screen {
+:root {
+  --paper: #faf9f6;
+  --paper-transparent: rgba(250, 249, 246, 0);
+  --text: #19243a;
+  --contrast-paper: #fff;
+  --contrast-text: #0f1b2d;
+  --input-text: #19243a;
+  --input-border: #b5c0cf;
+  --input-hover-border: #8195b1;
+  --input-active-border: #1046d1;
+  --dim-fg: #647087;
+  --hint-fg: #536078;
+  --link-fg: #174fbe;
+  --link-visited-fg: #514d9c;
+  --link-hover-fg: #0c369b;
+  --sort-link-fg: #334c73;
+  --brand-fg: #1046d1;
+  --brand-bg: #edf3ff;
+  --brand-bg-dark: #dbe7ff;
+  --brand-decor-light: #d9e3f4;
+  --headline-fg: #0f1b2d;
+  --headline-decor: #f0b38e;
+  --heading-fg: #243b60;
+  --home-heading-fg: #19243a;
+  --sidebar-bg: #edf1f7;
+  --signin-paper: #edf1f7;
+  --submission-bg: #edf1f7;
+  --submission-bg-dark: #dfe7f3;
+  --submission-sidebar-bg: #f3f6fb;
+  --submission-sidebar-fg: #19243a;
+  --submission-sidebar-title-fg: #3b4f6d;
+  --sf-title-fg: #243b60;
+  --rf-title-fg: #243b60;
+  --fieldset-bg: #fff;
+  --fieldset-hover-bg: #f4f7fc;
+  --fieldset-active-bg: #edf3ff;
+  --fieldset-border: #c8d3e2;
+  --fieldset-option-border: #c8d3e2;
+  --fieldset-option-hover-border: #849cc4;
+  --dialog-bg: #fff;
+  --tablink-border: #b5c9f2;
+  --tablink-active-bg: #e8effc;
+  --list-alternate-bg: #f1f5fb;
+  --list-group-bg: #e8eef7;
+  --list-group-border: #cbd6e6;
+  --review-border: #d6e0ef;
+  --comment-bg: #f7f8fa;
+  --comment-admin-bg: #edf1f7;
+  --comment-border: #d4ddeb;
+  --button-bgi: linear-gradient(#fff, #f4f6fa);
+  --button-hover-bgi: linear-gradient(#f5f8ff, #eaf0fc);
+  --button-active-bgi: linear-gradient(#e0e9fa, #eaf0fc);
+  --aitcc-surface: #fff;
+  --aitcc-border: #d8e0ec;
+  --aitcc-shadow: 0 8px 28px rgba(15, 27, 45, .055);
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+#p-header, body.paper #p-header {
+  background: #0f1b2d;
+  color: #faf7f2;
+  border-bottom: 3px solid #f0b38e;
+  box-shadow: 0 3px 14px rgba(8, 14, 31, .12);
+  padding-bottom: 16px;
+}
+#h-site { background: transparent; border: 0; padding-top: 12px; padding-bottom: 8px; }
+#h-right { padding-top: 14px; }
+#p-header h1, #p-header h1 a, #p-header #h-right,
+#p-header #h-deadline,
+#p-header #p-quicklinks a { color: #faf7f2; }
+#p-header #h-site a { color: #faf7f2; }
+#p-header #h-site a:hover { color: #a9caff; }
+#p-header #h-page { background: transparent; }
+#p-header .papmode:not(.active) a { color: #cbd6eb; }
+#p-header .papmode.active a { color: #1046d1; }
+#p-header h1 { font-weight: 650; letter-spacing: -.035em; }
+#p-header .usertime { color: #cbd6eb; }
+#p-header input { color: var(--input-text); }
+#p-header .profile-dropmenu-menubutton { color: #faf7f2; }
+h1, h2, h3 { letter-spacing: -.025em; }
+h1 { font-weight: 650; }
+h2.home { font-size: 1.2rem; font-weight: 650; }
+a { text-underline-offset: .18em; }
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 3px solid #659cf3;
+  outline-offset: 3px;
+}
+input[type=text], input[type=email], input[type=password], input[type=search],
+input[type=url], input[type=number], textarea {
+  border-radius: 7px;
+  box-shadow: inset 0 1px 2px rgba(15, 27, 45, .025);
+}
+select { border-radius: 7px; }
+/* Text actions, icon buttons, and table controls retain their compact geometry. */
+button:not(.link):not(.q):not(.qo):not(.qx):not(.btn-t):not(.btn-licon):not(.btn-licon-s),
+a.btn:not(.btn-licon):not(.btn-licon-s) {
+  border-radius: 7px;
+  padding: 5px 12px;
+  font-weight: 550;
+  box-shadow: 0 1px 2px rgba(15, 27, 45, .05);
+}
+.btn-primary, .btn-default, .btn-success,
+a.btn-primary, a.btn-default, a.btn-success {
+  background: #1046d1;
+  border-color: #1046d1;
+  color: #fff;
+  text-shadow: none;
+}
+.btn-primary:hover, .btn-default:hover, .btn-success:hover,
+.btn-primary:active, .btn-default:active, .btn-success:active {
+  background: #0c369b;
+  border-color: #0c369b;
+  color: #fff;
+}
+/* Keep warning, unsaved-change, danger, and disabled treatment upstream. */
+.btn-highlight, .differs .btn-primary, .differs .btn-default {
+  background: #ffe4bd;
+  border-color: #bb7b27;
+  color: #503715;
+}
+button:disabled, .btn.disabled, .btn:disabled { box-shadow: none; }
+#p-body.body-home { margin-top: 2rem; }
+.home-main { margin-right: 20rem; }
+.home-main > .avoid-home-sidebar { max-width: 100%; }
+.home-main > .homegrp:not(form), .home-sidebar > .homegrp {
+  background: var(--aitcc-surface);
+  border: 1px solid var(--aitcc-border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--aitcc-shadow);
+  margin-bottom: 1.4rem;
+}
+.home-sidebar > .homegrp { padding: 18px 20px; }
+.home-sidebar li + li { margin-top: .45rem; }
+.signingrp, .signingrp.homegrp {
+  background: var(--aitcc-surface);
+  border: 1px solid var(--aitcc-border);
+  border-top: 3px solid #1046d1;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--aitcc-shadow);
+}
+.signingrp input[type=email], .signingrp input[type=password] {
+  padding: 10px 12px;
+}
+.signingrp h1 { font-size: 1.8rem; margin-bottom: 1.25rem; }
+.leftmenu-item { border-radius: 6px; }
+.leftmenu-item.active { background: #dce7fc; color: #1046d1; }
+.leftmenu-item > a { border-radius: 6px; }
+fieldset.form-g { border-radius: 9px; }
+.pltable { font-size: .94rem; }
+.pltable > thead > tr > th { color: #3b4f6d; }
+.pltable > tbody > tr.pl > td { padding-top: 8px; padding-bottom: 8px; }
+.pltable > tbody > tr.pl:hover { box-shadow: inset 3px 0 #659cf3; }
+.papcard, .notecard { border-radius: 9px; }
+#p-footer { color: var(--dim-fg); }
+@media (max-width: 767px) {
+  .home-main { margin-right: 0; }
+  .home-sidebar { float: none; width: auto; margin: 0; }
+}
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  #p-body.body-home { margin-top: 1.2rem; }
+  .home-main > .homegrp, .home-sidebar > .homegrp { padding: 16px; }
+  .signingrp, .signingrp.homegrp { padding: 20px; max-width: 100%; }
+}
+/* Follow the OS dark preference, preserving the same navy/blue visual identity. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1b2d; --paper-transparent: rgba(15,27,45,0);
+    --text: #e6ebf4; --contrast-paper: #080e1f; --contrast-text: #faf7f2;
+    --input-text: #eef2fa; --input-border: #55647c;
+    --input-hover-border: #7e91b0; --input-active-border: #79acff;
+    --dim-fg: #a4b2c9; --hint-fg: #b6c3d8;
+    --link-fg: #8cb9ff; --link-visited-fg: #beb4ff; --link-hover-fg: #cfe0ff;
+    --sort-link-fg: #b1c7e8; --brand-fg: #79acff;
+    --brand-bg: #192b48; --brand-bg-dark: #213655;
+    --brand-decor-light: #34445e; --headline-fg: #faf7f2;
+    --heading-fg: #cbd6eb; --home-heading-fg: #faf7f2;
+    --sidebar-bg: #142238; --signin-paper: #0f1b2d;
+    --submission-bg: #142238; --submission-bg-dark: #192b48;
+    --submission-sidebar-bg: #142238; --submission-sidebar-fg: #e6ebf4;
+    --submission-sidebar-title-fg: #b6c3d8;
+    --sf-title-fg: #b4ceff; --rf-title-fg: #b4ceff;
+    --fieldset-bg: #19243a; --fieldset-hover-bg: #20304a;
+    --fieldset-active-bg: #253953; --fieldset-border: #435570;
+    --fieldset-option-border: #435570; --fieldset-option-hover-border: #7e91b0;
+    --dialog-bg: #19243a; --tablink-border: #49648f; --tablink-active-bg: #233955;
+    --list-alternate-bg: #192941; --list-group-bg: #23324b;
+    --list-group-border: #435570; --review-border: #34445e;
+    --comment-bg: #142238; --comment-admin-bg: #1d2e48; --comment-border: #34445e;
+    --button-bgi: linear-gradient(#283b57, #22324b);
+    --button-hover-bgi: linear-gradient(#324967, #293e5b);
+    --button-active-bgi: linear-gradient(#1c2b42, #263c58);
+    --aitcc-surface: #19243a; --aitcc-border: #34445e;
+    --aitcc-shadow: 0 8px 28px rgba(0,0,0,.12);
+  }
+  .leftmenu-item.active { background: #233b60; color: #a9caff; }
+  .pltable > thead > tr > th { color: #cbd6eb; }
+}
+}

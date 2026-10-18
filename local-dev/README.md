@@ -113,3 +113,15 @@ Copy that final verified backup to `var/local/backups/clean-test.sql` to enable 
 - [Changelog](https://github.com/kohler/hotcrp/blob/master/NEWS.md)
 
 Starting upstream commit: `9a01097c75490dc10fce17956df478f611d41ef5` (October 16, 2026). It matched official `master` when installed on October 18, 2026. The checked-out code declares HotCRP version 3.4; the changelog also contains an undated 3.5 section. Use the recorded commit to identify this exact installation.
+
+## Visual theme
+
+`stylesheets/aitcc-theme.css` adds an AITCC-inspired navy, blue, warm-white, and peach palette, refreshed controls, and responsive dashboard panels. It uses system fonts and does not load third-party assets. It changes presentation only; upstream PHP, JavaScript, forms, roles, and conference policies are unchanged.
+
+The local configuration enables it with:
+
+```php
+$Opt["stylesheets"][] = "stylesheets/aitcc-theme.css";
+```
+
+Remove that entry from `conf/options.php` to return to upstream styling, then refresh the browser. The same entry in `local-dev/manage.py` enables the theme on fresh installations. The stylesheet preserves upstream print layouts and uses a dark palette when your system prefers dark mode. Adjust the palette tokens at the top of the stylesheet to customize it further.
