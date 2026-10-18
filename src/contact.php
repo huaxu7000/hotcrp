@@ -4900,10 +4900,23 @@ final class Contact extends ContactPermissions implements JsonSerializable {
                                 && MeetingTracker::can_view_some_tracker($this))))));
     }
 
+    /** Whether this user may supply PC conflicts on a submission form.
+     * Administrators retain control when author collection is disabled.
+     * @return bool */
+    function can_collect_pc_conflicts(PaperInfo $prow) {
+        return $this->conf->opt("collectAuthorPCConflicts") !== false
+            || $this->privChair
+            || $this->can_manage($prow);
+    }
+
     /** @param PaperOption $opt
      * @param 0|4 $override
      * @return 0|1|2 */
     function view_option_state(PaperInfo $prow, $opt, $override = 0) {
+        if ($opt->id === PaperOption::PCCONFID
+            && !$this->can_collect_pc_conflicts($prow)) {
+            return 0;
+        }
         if (!$this->can_view_paper($prow, $opt->has_document())
             || !$opt->test_exists($prow, (($override | $this->_overrides) & self::OVERRIDE_EDIT_CONDITIONS) !== 0)) {
             return 0;
@@ -5006,6 +5019,10 @@ final class Contact extends ContactPermissions implements JsonSerializable {
      * currently exist, but edit conditions executed in the browser could make
      * it exist, after which it would be editable), or 2 (yes). */
     function edit_option_state(PaperInfo $prow, $opt) {
+        if ($opt->id === PaperOption::PCCONFID
+            && !$this->can_collect_pc_conflicts($prow)) {
+            return 0;
+        }
         if (!$this->scope_allows(TS::S_SUB_WRITE | ($opt->has_document() ? TS::S_DOC_WRITE : 0), $prow)) {
             return 0;
         }

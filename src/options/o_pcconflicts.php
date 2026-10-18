@@ -82,7 +82,8 @@ class PCConflicts_PaperOption extends PaperOption {
         return (object) $pcc;
     }
     function value_check(PaperValue $ov, Contact $user) {
-        if (!$this->test_visible($ov->prow)
+        if (!$user->can_collect_pc_conflicts($ov->prow)
+            || !$this->test_visible($ov->prow)
             || !$this->warn_missing
             || !$user->can_view_pc()
             || ($ov->prow->outcome_sign > 0 && $user->can_view_decision($ov->prow))) {

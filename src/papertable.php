@@ -365,6 +365,7 @@ class PaperTable {
         $opt = $this->conf->option_by_id(PaperOption::PCCONFID);
         '@phan-var-force PCConflicts_PaperOption $opt';
         return $this->edit_mode === 2
+            && $this->user->can_collect_pc_conflicts($this->prow)
             && $opt->test_visible($this->prow)
             && ($this->admin || $opt->test_editable($this->prow));
     }
