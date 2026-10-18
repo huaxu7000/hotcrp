@@ -170,6 +170,7 @@ a.btn-primary, a.btn-default, a.btn-success {
 button:disabled, .btn.disabled, .btn:disabled { box-shadow: none; }
 #p-body.body-home { margin-top: 2rem; }
 .home-main { margin-right: 20rem; }
+.home-content:not(:has(> .home-sidebar)) > .home-main { margin-right: 0; }
 .home-main > .avoid-home-sidebar { max-width: 100%; }
 .home-main > .homegrp:not(form), .home-sidebar > .homegrp {
   background: var(--aitcc-surface);

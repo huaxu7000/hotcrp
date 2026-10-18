@@ -125,3 +125,5 @@ $Opt["stylesheets"][] = "stylesheets/aitcc-theme.css";
 ```
 
 Remove that entry from `conf/options.php` to return to upstream styling, then refresh the browser. The same entry in `local-dev/manage.py` enables the theme on fresh installations. The stylesheet preserves upstream print layouts and uses a dark palette when your system prefers dark mode. Adjust the palette tokens at the top of the stylesheet to customize it further.
+
+`local-dev/ui-components.json`, loaded through `$Opt["pages"]`, disables the shared Conference information sidebar panel for signed-out visitors, authors, reviewers, and chairs. Committee management remains under the chair’s Users tools. This removes the display panel only; it does not change access permissions for the committee directory.

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "home/sidebar/info",
+    "merge": true,
+    "allow_if": false
+  }
+]
