@@ -115,6 +115,17 @@ body.paper #p-header #p-quicklinks a { color: var(--text); }
 #p-header .usertime { color: #cbd6eb; }
 #p-header input { color: var(--input-text); }
 #p-header .profile-dropmenu-menubutton { color: #faf7f2; }
+/* The account button sits on navy on every page. Upstream's light hover
+ * background conflicts with its white label, so keep all interactive states dark. */
+#p-header #h-usermenubutton:hover,
+#p-header #h-usermenubutton:focus-visible,
+#p-header #h-usermenubutton:active,
+#p-header #h-usermenubutton[aria-expanded="true"] {
+  background: #233b60;
+  border-color: #8ba8d4;
+  color: #faf7f2;
+}
+
 h1, h2, h3 { letter-spacing: -.025em; }
 h1 { font-weight: 650; }
 h2.home { font-size: 1.2rem; font-weight: 650; }
